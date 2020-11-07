@@ -1,8 +1,31 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ProductList from "./components/ProductList";
+import SingleProduct from "./components/SingleProduct";
+import { Layout } from "antd";
 
 function App() {
   return (
-      <h1>Hi there</h1>
+    <BrowserRouter>
+      <Layout>
+        <Layout.Header>
+          <Navbar />
+        </Layout.Header>
+        <Layout.Content style={{ backgroundColor: "#fff", padding: "2rem" }}>
+          <Route path={"/"} exact>
+            <ProductList />
+          </Route>
+          <Route path={"/products/:id"}>
+            <SingleProduct />
+          </Route>
+        </Layout.Content>
+        <Layout.Footer style={{ textAlign: "center", backgroundColor: "#fff" }}>
+          <Footer />
+        </Layout.Footer>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
