@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "mkhamat <myxa@xakep.org>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "yarn --cwd ./backend server & yarn --cwd ./client start"
+  },
+  "dependencies": {}
 }
