@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProductList from "./components/ProductList";
 import SingleProduct from "./components/SingleProduct";
+import CartPage from "./components/Cart";
 import { Layout } from "antd";
 
 function App() {
@@ -13,12 +14,21 @@ function App() {
         <Layout.Header>
           <Navbar />
         </Layout.Header>
-        <Layout.Content style={{ backgroundColor: "#fff", padding: "2rem" }}>
+        <Layout.Content
+          style={{
+            backgroundColor: "#fff",
+            padding: "2rem",
+            minHeight: "80vh",
+          }}
+        >
           <Route path={"/"} exact>
             <ProductList />
           </Route>
           <Route path={"/products/:id"}>
             <SingleProduct />
+          </Route>
+          <Route path={"/cart"}>
+            <CartPage />
           </Route>
         </Layout.Content>
         <Layout.Footer style={{ textAlign: "center", backgroundColor: "#fff" }}>
