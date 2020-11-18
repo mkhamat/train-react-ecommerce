@@ -1,31 +1,70 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Rating from "./Rating";
+import { Link } from "react-router-dom";
+import { fetchProducts } from "../ducks/productList";
+import { RootState } from "../store";
+import { Card } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+import Meta from "antd/lib/card/Meta";
+import { Product } from "../types";
 
 export default function ProductList() {
-    let products = [];
-    for (let i = 0; i < 10; i++) {
-        products.push(<ProductCard/>)
-    }
-    return (
-        <div className={'product-list'}>
-            {products}
-        </div>
-    )
+  const dispatch = useDispatch();
+  const {
+    loading,
+    products,
+  }: { loading: boolean; products: Product[] } = useSelector(
+    (state: RootState) => state.productList
+  );
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+  return (
+    <div
+      style={{
+        maxWidth: "1200px",
+        margin: "auto",
+        display: "flex",
+        justifyContent: "center",
+        flexWrap: "wrap",
+      }}
+    >
+      {loading ? (
+        <LoadingOutlined
+          style={{
+            fontSize: "5rem",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+          }}
+        />
+      ) : (
+        products &&
+        products.map((product: Product) => {
+          return <ProductCard {...product} key={product._id} />;
+        })
+      )}
+    </div>
+  );
 }
 
-function ProductCard() {
+function ProductCard(props: Product) {
   return (
-    <div className="product-card">
-        <img
-          src="https://w7.pngwing.com/pngs/723/514/png-transparent-laptop-personal-computer-laptops-electronics-photography-computer.png"
-          alt=""
+    <Link to={`/products/${props._id}`}>
+      <Card
+        style={{ width: 300, margin: "1rem" }}
+        cover={<img src={props.image} />}
+        hoverable
+      >
+        <Meta title={props.name} description={props.description} />
+        <Rating
+          rating={props.rating}
+          num={props.numberOfReviews}
+          disabled={true}
         />
-        <h5 className="product-title">Computer with some new hardware</h5>
-      <div className="product-description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos laborum
-        libero maiores quae voluptatum! Nesciunt.
-      </div>
-      <div className="product-reviews"> &#11242; 4 of 5</div>
-      <span className="product-price">100000</span>
-    </div>
+        <div>${props.price}</div>
+      </Card>
+    </Link>
   );
 }
