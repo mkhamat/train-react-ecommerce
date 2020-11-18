@@ -22,17 +22,7 @@ export type CartItem = {
   payload?: CartPayload;
 };
 
-export type CartQty = {
-  type: string;
-  payload?: { id: string; qty: number };
-};
-
 export type ProductList = {
   type: string;
   payload?: Product[];
-};
-
-export type ProductList = {
-  type: string;
-  payload: Product;
 };
