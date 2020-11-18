@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function Footer (){
-    return (
-        <footer>
-            Onshop &copy; 2020
-        </footer>
-    )
+export default function Footer() {
+  return <span>Onshop &copy; 2020</span>;
 }
