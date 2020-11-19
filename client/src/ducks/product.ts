@@ -1,11 +1,11 @@
 import axios from "axios";
-import { Action } from "./types";
+import { ProductList, Product } from "../types";
 const PRODUCT_PAGE_REQUEST = "PRODUCT_PAGE_REQUEST";
 const PRODUCT_PAGE_SUCCESS = "PRODUCT_PAGE_SUCCESS";
 const PRODUCT_PAGE_FAIL = "PRODUCT_PAGE_FAIL";
 
 export function fetchProduct(id: string) {
-  return async (dispatch: ({}: Action) => void) => {
+  return async (dispatch: ({}: ProductList) => void) => {
     try {
       dispatch({ type: PRODUCT_PAGE_REQUEST });
       let { data } = await axios.get(`/products/${id}`);
@@ -17,8 +17,10 @@ export function fetchProduct(id: string) {
 }
 
 export default function productReducer(
-  state = { product: { reviews: [] } },
-  action: Action
+  state: { product: Product | null } = {
+    product: null,
+  },
+  action: ProductList
 ) {
   switch (action.type) {
     case PRODUCT_PAGE_REQUEST:
