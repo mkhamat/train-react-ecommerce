@@ -1,6 +1,3 @@
-import { Action } from "redux";
-import { Product } from "./components/ProductList";
-
 export type Product = {
   _id: string;
   name: string;
