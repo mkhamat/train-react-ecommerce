@@ -4,7 +4,7 @@ const CART_ADD_PRODUCT = "CART_ADD_PRODUCT";
 const CART_REMOVE_PRODUCT = "CART_REMOVE_PRODUCT";
 
 export function addProductToCart({ product, qty }: CartPayload) {
-  return async (dispatch: ({}: CartItem) => void) => {
+  return async (dispatch: (action: CartItem) => void) => {
     dispatch({
       type: CART_ADD_PRODUCT,
       payload: {

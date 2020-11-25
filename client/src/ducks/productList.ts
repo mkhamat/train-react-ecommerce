@@ -5,7 +5,7 @@ const PRODUCT_LIST_SUCCESS = "PRODUCT_LIST_SUCCESS";
 const PRODUCT_LIST_FAIL = "PRODUCT_LIST_FAIL";
 
 export function fetchProducts() {
-  return async (dispatch: ({}: ProductList) => void) => {
+  return async (dispatch: (action: ProductList) => void) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
       let { data } = await axios.get("/products");

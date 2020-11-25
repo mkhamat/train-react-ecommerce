@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { fetchProduct } from "../ducks/product";
 import { LoadingOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { Button, Col, Image, Input, InputNumber, message, Row } from "antd";
+import { Button, Col, Image, InputNumber, message, Row } from "antd";
 import { addProductToCart } from "../ducks/cart";
 
 export default function SingleProduct() {
@@ -24,7 +24,7 @@ export default function SingleProduct() {
   );
   useEffect(() => {
     dispatch(fetchProduct(id));
-  }, []);
+  }, [dispatch, id]);
   function handleAddToCart() {
     let exists = cartList.cart.find((x: any) => {
       return x.product._id === product._id;

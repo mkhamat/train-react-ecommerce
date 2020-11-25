@@ -1,7 +1,6 @@
 import { DeleteTwoTone } from "@ant-design/icons";
-import { Avatar, Button, Col, Divider, Empty, InputNumber, Row } from "antd";
+import { Avatar, Button, Col, Empty, InputNumber, Row } from "antd";
 import { List } from "antd";
-import { spawn } from "child_process";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -92,6 +91,7 @@ export default function CartPage() {
               src={
                 "https://ariya.events/wp-content/uploads/2020/07/ariya-empty-cart.png"
               }
+              alt={"Empty cart"}
             />
           }
         >

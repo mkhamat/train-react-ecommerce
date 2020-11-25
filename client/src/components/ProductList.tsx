@@ -19,7 +19,7 @@ export default function ProductList() {
   );
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
   return (
     <div
       style={{
@@ -54,7 +54,7 @@ function ProductCard(props: Product) {
     <Link to={`/products/${props._id}`}>
       <Card
         style={{ width: 300, margin: "1rem" }}
-        cover={<img src={props.image} />}
+        cover={<img src={props.image} alt={props.name} />}
         hoverable
       >
         <Meta title={props.name} description={props.description} />

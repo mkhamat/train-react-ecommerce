@@ -1,5 +1,5 @@
 import MenuItem from "antd/lib/menu/MenuItem";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Badge, Menu } from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
@@ -19,6 +19,7 @@ export default function Navbar() {
       mode="horizontal"
       theme="dark"
     >
+      <Menu.Item>
       <Link to="/">
         <span
           style={{
@@ -29,6 +30,7 @@ export default function Navbar() {
           ONSHOP
         </span>
       </Link>
+      </Menu.Item>
       <Menu.Item style={{ float: "right" }} icon={<ShoppingCartOutlined />}>
         <Link to="/cart">
           <Badge

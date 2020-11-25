@@ -1,6 +1,5 @@
 import { Rate } from "antd";
 import React from "react";
-import productListReducer from "../ducks/productList";
 
 export default function Rating({
   rating,
