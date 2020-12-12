@@ -4,6 +4,7 @@ import * as dotenv from "dotenv";
 import * as bodyParser from "body-parser";
 import { router as products } from "./routes/productsRoutes";
 import { router as users } from "./routes/userRoutes";
+import { errorHandler } from "./middleware/errorHandler";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.listen(PORT, () => {
 app.use(bodyParser.json());
 app.use("/products", products);
 app.use("/users", users);
+app.use(errorHandler);
 
 mongoose
   .connect(process.env.MONGO_URI, {
