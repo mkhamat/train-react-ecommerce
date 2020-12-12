@@ -1,14 +1,18 @@
-import * as express from "express";
+import * as express from "express"
 import {
   authenticate,
-  showProfile,
+  getProfile,
   sign,
-} from "../controllers/usersController";
-import { authorize } from "../middleware/auth";
-const router = express.Router();
+  updateProfile,
+} from "../controllers/usersController"
+import { authorize } from "../middleware/auth"
+const router = express.Router()
 
-router.get("/", authenticate);
-router.route("/profile").get(authorize, showProfile);
-router.post("/", sign);
+router.post("/login", authenticate)
+router
+  .route("/profile")
+  .get(authorize, getProfile)
+  .put(authorize, updateProfile)
+router.post("/", sign)
 
-export { router };
+export { router }
