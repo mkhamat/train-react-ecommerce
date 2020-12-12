@@ -1,11 +1,14 @@
-import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ProductList from "./components/ProductList";
-import SingleProduct from "./components/SingleProduct";
-import CartPage from "./components/Cart";
-import { Layout } from "antd";
+import React from "react"
+import { BrowserRouter, Route } from "react-router-dom"
+import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
+import HomeScreen from "./screens/HomeScreen"
+import SingleProductScreen from "./screens/SingleProductScreen"
+import CartScreen from "./screens/CartScreen"
+import LoginScreen from "./screens/LoginScreen"
+import { Layout } from "antd"
+import RegisterScreen from "./screens/RegisterScreen"
+import ProfileScreen from "./screens/ProfileScreen"
 
 function App() {
   return (
@@ -22,13 +25,22 @@ function App() {
           }}
         >
           <Route path={"/"} exact>
-            <ProductList />
+            <HomeScreen />
           </Route>
           <Route path={"/products/:id"}>
-            <SingleProduct />
+            <SingleProductScreen />
           </Route>
           <Route path={"/cart"}>
-            <CartPage />
+            <CartScreen />
+          </Route>
+          <Route path={"/users/login"}>
+            <LoginScreen />
+          </Route>
+          <Route path={"/users/register"}>
+            <RegisterScreen />
+          </Route>
+          <Route path={"/users/profile"}>
+            <ProfileScreen />
           </Route>
         </Layout.Content>
         <Layout.Footer style={{ textAlign: "center", backgroundColor: "#fff" }}>
@@ -36,7 +48,7 @@ function App() {
         </Layout.Footer>
       </Layout>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
