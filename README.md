@@ -8,6 +8,6 @@ Create `.env` file in backend directory
 MONGO_URI=mongodb+srv://<USER>:<PASSWORD>@cluster4.a12b3c.mongodb.net/sample?retryWrites=true&w=majority
 JWT_SECRET=123
 ```
-In root directory run:
+In root directory run: \
 `yarn install` \
 `yarn dev`
